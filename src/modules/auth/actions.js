@@ -9,11 +9,11 @@ import {
     REQ_START,
 } from "./action-types";
 
-export const login = (username, password) => async (dispatch) => {
+export const login = ({ email, password }) => async (dispatch) => {
     dispatch({ type: REQ_START });
     await axiosRootInstance
-        .post("login", {
-            username,
+        .post("auth/login", {
+            email,
             password,
         })
         .then((res) => {

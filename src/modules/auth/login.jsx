@@ -1,27 +1,28 @@
 import React from "react";
 import { Form, Input, Button, Card, Row } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { login, clearAuthError } from "./actions";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Login = (props) => {
 	const onFinish = (values) => {
-		console.log("Received values of form: ", values);
+		props.login(values);
 	};
 
 	return (
-		<Card title={<span>Login</span>} style={{ width: 300 }}>
+		<Card title={<span>Login</span>} style={{ width: 500 }}>
 			<Form
 				name="normal_login"
 				className="login-form"
-				initialValues={{ remember: true }}
 				onFinish={onFinish}
 			>
 				<Form.Item
-					name="username"
+					name="email"
 					rules={[
 						{
 							required: true,
-							message: "Please input your Username!",
+							message: "Please input your email!",
 						},
 					]}
 				>
@@ -29,7 +30,7 @@ const Login = (props) => {
 						prefix={
 							<UserOutlined className="site-form-item-icon" />
 						}
-						placeholder="Username"
+						placeholder="Email"
 					/>
 				</Form.Item>
 				<Form.Item
@@ -53,6 +54,7 @@ const Login = (props) => {
 				<Form.Item>
 					<Row justify="center">
 						<Button
+							loading={props.loading}
 							type="primary"
 							htmlType="submit"
 							className="login-form-button"
@@ -70,4 +72,12 @@ const Login = (props) => {
 	);
 };
 
-export default Login;
+const mapStateToProps = ({ authentication }) => ({
+	loading: authentication.loading,
+	isAuthenticated: authentication.isAuthenticated,
+	loginError: authentication.errorMessage,
+});
+
+const mapDispatchToProps = { login, clearAuthError };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
