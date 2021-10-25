@@ -1,7 +1,7 @@
 import React from "react";
 
 const Register = (props) => {
-	return <div>Register Page</div>;
+	return <div style={{ color: "black" }}>Register Page</div>;
 };
 
 export default Register;

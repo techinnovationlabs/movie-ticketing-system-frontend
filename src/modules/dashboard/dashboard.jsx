@@ -1,7 +1,7 @@
 import React from "react";
 
 const Dashboard = (props) => {
-	return <div>Dashboard Page</div>;
+	return <div style={{ color: "black" }}>Dashboard Page</div>;
 };
 
 export default Dashboard;

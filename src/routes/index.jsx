@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import NotFound from "../components/not-found";
 import Login from "../modules/auth/login";
 import Dashboard from "../modules/dashboard/dashboard";
-import Register from "../modules/register/register";
+import Register from "../modules/auth/register";
 
 const Routes = () => (
 	<>
