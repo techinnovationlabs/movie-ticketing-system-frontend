@@ -1,9 +1,13 @@
 import { AUTH, AUTH_ERROR } from "../../helpers/constant";
 
+const authUser = localStorage.getItem("authUser")
+  ? JSON.parse(localStorage.getItem("authUser"))
+  : null;
+const authenticated = localStorage.getItem("authUser") ? true : false;
 const initialState = {
   token: localStorage.getItem("token"),
-  isAuthenticated: JSON.parse(localStorage.getItem("authUser")) ? true : null,
-  user: JSON.parse(localStorage.getItem("authUser")),
+  isAuthenticated: authenticated,
+  user: authUser,
 };
 export default function (state = initialState, action) {
   const { type, payload } = action;

@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+.loginFormAlign {
+  position: relative;
+  top: 28vh;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
