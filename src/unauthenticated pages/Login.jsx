@@ -1,13 +1,26 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 import { Row, Col } from "antd";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, message } from "antd";
 
 import "../App.css";
 import { login } from "../redux/action/authAction";
 import { connect } from "react-redux";
+import { VISITOR } from "../helpers/constant";
 
-const Login = ({ login }) => {
+const Login = ({ login, role, loginSuccess, loginErrorMsg }) => {
+  const history = useHistory();
+
+  useEffect(() => {
+    if (loginSuccess === true) {
+      role === VISITOR
+        ? history.push("/movies")
+        : history.push("/owner-dashboard");
+    } else if (loginSuccess === false) {
+      message.error(loginErrorMsg);
+    }
+  }, [loginSuccess]);
+
   const onFinish = (values) => {
     console.log("Success:", values);
     login({ data: values });
@@ -36,12 +49,12 @@ const Login = ({ login }) => {
           autoComplete="off"
         >
           <Form.Item
-            label="Username"
-            name="username"
+            label="Email"
+            name="email"
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: "Please input your Email!",
               },
             ]}
           >
@@ -89,7 +102,9 @@ const Login = ({ login }) => {
 };
 
 const mapStateToProps = (state) => ({
-  ...state,
+  loginSuccess: state.auth.loginSuccess,
+  role: state.auth.user?.role,
+  loginErrorMsg: state.auth.loginErrorMsg,
 });
 
 export default connect(mapStateToProps, { login })(Login);

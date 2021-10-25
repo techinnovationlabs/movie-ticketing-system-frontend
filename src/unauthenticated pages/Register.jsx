@@ -1,5 +1,9 @@
-import React from "react";
-import { Form, Input, Select, Row, Col, Button } from "antd";
+import React, { useEffect } from "react";
+import { Form, Input, Select, Row, Col, Button, message } from "antd";
+import { register } from "../redux/action/authAction";
+import { connect } from "react-redux";
+
+import "../App.css";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -25,15 +29,22 @@ const tailFormItemLayout = {
   },
 };
 
-const Register = () => {
+const Register = ({ register, registerSuccess }) => {
   const [form] = Form.useForm();
-
+  useEffect(() => {
+    if (registerSuccess === true) {
+      message.success("Registration successfull!");
+    } else if (registerSuccess === false) {
+      message.error("Registration failure!");
+    }
+  }, [registerSuccess]);
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    register(values);
   };
 
   return (
-    <Row align="middle">
+    <Row align="middle" className="registerFormAlign">
       <Col sm={0} lg={8} offset={{ sm: 0, lg: 8 }} />
       <Col sm={24} lg={8}>
         <Form
@@ -106,7 +117,7 @@ const Register = () => {
           </Form.Item>
 
           <Form.Item
-            name="nickname"
+            name="name"
             label="Nickname"
             tooltip="What do you want others to call you?"
             rules={[
@@ -121,7 +132,7 @@ const Register = () => {
           </Form.Item>
 
           <Form.Item
-            name="phone"
+            name="phoneNumber"
             label="Phone Number"
             rules={[
               { required: true, message: "Please input your phone number!" },
@@ -129,16 +140,25 @@ const Register = () => {
           >
             <Input style={{ width: "100%" }} />
           </Form.Item>
-
+          <Form.Item
+            name="role"
+            label="Role"
+            rules={[{ required: true, message: "Please select role!" }]}
+          >
+            <Select placeholder="select your role">
+              <Option value="VISITOR">Visitor</Option>
+              <Option value="OWNER">Owner</Option>
+            </Select>
+          </Form.Item>
           <Form.Item
             name="gender"
             label="Gender"
             rules={[{ required: true, message: "Please select gender!" }]}
           >
             <Select placeholder="select your gender">
-              <Option value="male">Male</Option>
-              <Option value="female">Female</Option>
-              <Option value="other">Other</Option>
+              <Option value="MALE">Male</Option>
+              <Option value="FEMALE">Female</Option>
+              <Option value="OTHER">Other</Option>
             </Select>
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
@@ -152,4 +172,7 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapStateToProps = (state) => ({
+  registerSuccess: state.auth.registerSuccess,
+});
+export default connect(mapStateToProps, { register })(Register);

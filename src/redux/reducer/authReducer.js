@@ -1,4 +1,9 @@
-import { AUTH, AUTH_ERROR } from "../../helpers/constant";
+import {
+  AUTH,
+  AUTH_ERROR,
+  REGISTER,
+  REGISTER_ERROR,
+} from "../../helpers/constant";
 
 const authUser = localStorage.getItem("authUser")
   ? JSON.parse(localStorage.getItem("authUser"))
@@ -8,6 +13,9 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: authenticated,
   user: authUser,
+  loginSuccess: null,
+  registerSuccess: null,
+  loginErrorMsg: null,
 };
 export default function (state = initialState, action) {
   const { type, payload } = action;
@@ -20,7 +28,9 @@ export default function (state = initialState, action) {
         token: payload.token,
         isAuthenticated: true,
         user: payload.user,
+        loginSuccess: true,
       };
+
     case AUTH_ERROR:
       localStorage.removeItem("authUser");
       localStorage.removeItem("token");
@@ -28,6 +38,18 @@ export default function (state = initialState, action) {
         token: null,
         isAuthenticated: false,
         user: null,
+        loginSuccess: false,
+        loginErrorMsg: payload.data ? payload.data : "Something went wrong",
+      };
+
+    case REGISTER:
+      return {
+        registerSuccess: true,
+      };
+
+    case REGISTER_ERROR:
+      return {
+        registerSuccess: false,
       };
     default:
       return state;

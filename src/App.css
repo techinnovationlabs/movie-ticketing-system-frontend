@@ -32,6 +32,12 @@
   position: relative;
   top: 28vh;
 }
+
+.registerFormAlign {
+  position: relative;
+  top: 15vh;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
