@@ -33,6 +33,27 @@ export const login = ({ email, password }) => async (dispatch) => {
         });
 };
 
+export const register = (values) => async (dispatch) => {
+    dispatch({ type: REQ_START });
+    await axiosRootInstance
+        .post("users/", { ...values })
+        .then((res) => {
+            localStorage.setItem("access_token", res.data.token);
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: { user: res.data.user },
+            });
+        })
+        .catch((err) => {
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: {
+                    errorMessage: err.response?.data,
+                },
+            });
+        });
+};
+
 export const logoutUser = () => (dispatch) => {
     localStorage.removeItem("access_token");
     dispatch({

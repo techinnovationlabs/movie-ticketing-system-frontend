@@ -61,7 +61,7 @@ const Login = (props) => {
 					]}
 					onChange={onChange}
 				>
-					<Input
+					<Input.Password
 						prefix={
 							<LockOutlined className="site-form-item-icon" />
 						}
