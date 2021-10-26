@@ -22,12 +22,12 @@ const HeaderComp = ({ account, logoutUser }) => {
 			<Menu.Item
 				key="2"
 				onClick={(e) => {
-					history.push("/request/my-requests");
+					history.push("/my-bookings");
 				}}
 			>
 				<div className="menuList">
 					<img src={myOrder} alt="my-order" />
-					<span>My Requests</span>
+					<span>My Bookings</span>
 				</div>
 			</Menu.Item>
 			<Menu.Item key="1" onClick={logout}>

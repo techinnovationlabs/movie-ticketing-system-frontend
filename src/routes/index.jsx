@@ -9,6 +9,7 @@ import Screens from "../modules/screens/screens";
 import Users from "../modules/users/users";
 import Shows from "../modules/shows/shows";
 import MovieDetail from "../modules/movies/movie/movie";
+import MyBookings from "../modules/my-bookings/my-bookings";
 import { autoLogin } from "../modules/auth/actions";
 import { connect } from "react-redux";
 import PrivateRoute from "./private-route";
@@ -21,6 +22,11 @@ const Routes = ({ autoLogin }) => {
 	return (
 		<>
 			<Switch>
+				<PrivateRoute
+					exact
+					path={`/my-bookings`}
+					component={MyBookings}
+				/>
 				<PrivateRoute
 					exact
 					path={`/movies/:id`}
