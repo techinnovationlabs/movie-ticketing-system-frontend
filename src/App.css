@@ -38,6 +38,15 @@
   top: 15vh;
 }
 
+.ant-layout-header {
+  height: 64px;
+  padding: 0 50px;
+  color: rgba(245, 245, 245, 0.85) !important;
+  font-weight: bold;
+  line-height: 64px;
+  background: #001529;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

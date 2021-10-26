@@ -1,0 +1,30 @@
+.movie-title {
+  padding-top: 50px;
+  color: black;
+  font-weight: bold;
+}
+
+.overall-spacing {
+  padding: 20px;
+}
+.top-spacing {
+  padding-top: 50px;
+}
+
+.player-wrapper {
+  width: 100%;
+  height: 76vh;
+  text-align: center;
+}
+
+.fav-color {
+  color: rgb(187, 0, 56) !important;
+  font-size: large;
+}
+
+.text-area {
+  padding: 20px;
+  width: 70% !important;
+  position: relative;
+  top: 10px;
+}
