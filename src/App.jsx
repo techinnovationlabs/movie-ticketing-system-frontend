@@ -8,9 +8,11 @@ import { Layout } from "antd";
 const { Content, Footer, Header } = Layout;
 function App() {
   const isAuthenticated = store.getState().auth.isAuthenticated;
+
   return (
     <Provider store={store}>
-      {!isAuthenticated ? (
+      {window.location.pathname.includes("login") ||
+      window.location.pathname.includes("sign-up") ? (
         <AppRoute />
       ) : (
         <Layout>

@@ -28,12 +28,21 @@
   color: #61dafb;
 }
 
-.loginFormAlign {
+.login-form-align {
   position: relative;
   top: 28vh;
 }
 
-.registerFormAlign {
+.login-label {
+  position: relative;
+  top: 24vh;
+}
+
+.register-label {
+  position: relative;
+  top: 10vh;
+}
+.register-form-align {
   position: relative;
   top: 15vh;
 }
