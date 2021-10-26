@@ -22,6 +22,7 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case AUTH:
+      localStorage.setItem("authenticated", true);
       localStorage.setItem("authUser", JSON.stringify(payload.user));
       localStorage.setItem("token", JSON.stringify(payload.token));
       return {

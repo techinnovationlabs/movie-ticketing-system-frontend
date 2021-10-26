@@ -1,6 +1,13 @@
+// REDUX CONSTANTS
 export const AUTH = "AUTH";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const REGISTER = "REGISTER";
 export const REGISTER_ERROR = "REGISTER_ERROR";
 
+export const FETCH_MOVIES = "FETCH_MOVIES";
+export const FETCH_MOVIES_ERROR = "FETCH_MOVIES_ERROR";
+export const SELECTED_MOVIE = "SELECTED_MOVIE";
+export const SELECTED_MOVIE_ERROR = "SELECTED_MOVIE_ERROR";
+
+// COMMON CONSTANTS
 export const VISITOR = "VISITOR";
