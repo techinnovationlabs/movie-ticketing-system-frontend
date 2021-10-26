@@ -8,3 +8,5 @@ export const TIMEOUT_ERROR = "ECONNABORTED";
 export const VISITOR = "VISITOR";
 export const OWNER = "OWNER";
 export const RECORDS_PER_PAGE = 10;
+export const NORMAL_TIER_ROWS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
+export const VIP_TIER_ROWS = ["L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];

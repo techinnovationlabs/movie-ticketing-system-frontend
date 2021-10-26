@@ -3,7 +3,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { Modal, Typography, Button, Row, Col } from "antd";
 const { Text } = Typography;
 
-const userViewModal = ({ handelClose, user, visible }) => {
+const screenViewModal = ({ handelClose, screen, visible }) => {
 	return (
 		<Modal
 			title={
@@ -14,7 +14,7 @@ const userViewModal = ({ handelClose, user, visible }) => {
 							style={{ display: "flex", alignItems: "center" }}
 							span={20}
 						>
-							View User
+							View Screen
 						</Col>
 						<Col className="gutter-row" span={4}>
 							<Button
@@ -36,37 +36,27 @@ const userViewModal = ({ handelClose, user, visible }) => {
 		>
 			<Row>
 				<Col className="doubleDot" span={11}>
-					<Text> First Name</Text>
+					<Text> Screen Name</Text>
 				</Col>
 				<Col className="popValue" span={13}>
-					<Text>{user.firstName} </Text>
+					<Text>{screen.name} </Text>
 				</Col>
 			</Row>
 			<Row>
-				<Col className="doubleDot" span={11}>
-					<Text> Last Name</Text>
-				</Col>
-				<Col className="popValue" span={13}>
-					<Text>{user.lastName} </Text>
-				</Col>
+				<Text> Tiers</Text>
 			</Row>
-			<Row>
-				<Col className="doubleDot" span={11}>
-					<Text> Role</Text>
-				</Col>
-				<Col className="popValue" span={13}>
-					<Text>{user.role} </Text>
-				</Col>
-			</Row>
-			<Row>
-				<Col className="doubleDot" span={11}>
-					<Text> Email</Text>
-				</Col>
-				<Col className="popValue" span={13}>
-					<Text>{user.email} </Text>
-				</Col>
-			</Row>
-
+			{screen.tier.map((tier) => {
+				return (
+					<Row>
+						<Col className="doubleDot" span={11}>
+							<Text> {tier.name}</Text>
+						</Col>
+						<Col className="popValue" span={13}>
+							<Text>{tier.price} Rs</Text>
+						</Col>
+					</Row>
+				);
+			})}
 			<Row justify={"center"}>
 				<Button
 					style={{ marginTop: 25 }}
@@ -80,4 +70,4 @@ const userViewModal = ({ handelClose, user, visible }) => {
 	);
 };
 
-export default userViewModal;
+export default screenViewModal;

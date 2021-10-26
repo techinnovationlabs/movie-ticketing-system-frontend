@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { fetchUsers } from "./actions";
 import UserViewModal from "./userview";
 import { Helmet } from "react-helmet";
-import "./user.css";
 import { CLEAR_USER_FETCH_ERROR_MSG } from "./action-types";
 import { clearMessage } from "../../utils/common-actions";
 import { RECORDS_PER_PAGE } from "../../utils/constants";
