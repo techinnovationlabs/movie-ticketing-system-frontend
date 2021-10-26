@@ -7,3 +7,4 @@ export const TIMEOUT_ERROR = "ECONNABORTED";
 
 export const VISITOR = "VISITOR";
 export const OWNER = "OWNER";
+export const RECORDS_PER_PAGE = 10;
