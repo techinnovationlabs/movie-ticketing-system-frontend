@@ -1,0 +1,35 @@
+.header {
+    background: #fff;
+    padding: 0 15px;
+}
+
+.header .iconsContainer {
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    column-gap: 10px;
+}
+
+.header .iconsContainer img {
+    width: 40px;
+}
+
+.header .iconsContainer .loginMenu img {
+    width: 25px;
+}
+
+.loginDropdownMenu img {
+    width: 25px;
+    filter: invert(0%) sepia(99%) saturate(7%) hue-rotate(253deg) brightness(0%) contrast(100%);
+}
+
+.loginDropdownMenu .menuList {
+    display: flex;
+    column-gap: 10px;
+}
+
+.usernameContainer {
+    font-size: 15px;
+    padding-left: 5px;
+}

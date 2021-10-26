@@ -4,3 +4,6 @@ export const SERVER_DOWN_MESSAGE =
 export const NETWORK_DOWN_MESSAGE =
     "Network not available.Please connect to a stable internet connection";
 export const TIMEOUT_ERROR = "ECONNABORTED";
+
+export const VISITOR = "VISITOR";
+export const OWNER = "OWNER";

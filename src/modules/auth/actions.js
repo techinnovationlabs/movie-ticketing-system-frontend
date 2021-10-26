@@ -63,7 +63,6 @@ export const logoutUser = () => (dispatch) => {
 };
 
 export const autoLogin = () => async (dispatch) => {
-
     await axiosRootInstance
         .get("users/me")
         .then((res) => {
@@ -78,7 +77,7 @@ export const autoLogin = () => async (dispatch) => {
             dispatch({
                 type: AUTO_LOGIN_FAIL,
                 payload: {
-                    errorMessage: err.response?.data?.message,
+                    errorMessage: err.response?.data,
                 },
             });
         });
