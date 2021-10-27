@@ -12,9 +12,11 @@ import {
 	Typography,
 } from "antd";
 import { fetchMovieById } from "../movies/actions";
+import { bookShow } from "./actions";
 import { fetchShowsByDateAndMovie } from "../shows/actions";
 import { KIDS_CONCESSION_PERCENTAGE } from "../../utils/constants";
 import Title from "antd/lib/skeleton/Title";
+import { useHistory } from "react-router-dom";
 const { Text } = Typography;
 const { Option } = Select;
 const { Step } = Steps;
@@ -37,7 +39,7 @@ const Booking = ({
 	const [show, setShow] = useState();
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [allotedTickets, setAllotedTickets] = useState([]);
-
+	const history = useHistory();
 	const getAvailableScreens = () => {
 		const availableScreens = [
 			...new Map(
@@ -285,6 +287,27 @@ const Booking = ({
 	const [current, setCurrent] = useState(0);
 	const [completed, setCompleted] = useState(false);
 
+	const onConfirmBooking = async () => {
+		const res = await bookShow({
+			tierId: selectedTier,
+			allotedTickets,
+			totalPrice,
+			ticketDetails: {
+				adults: selectedSeats.adults,
+				kids: selectedSeats.kids,
+			},
+			showId: show._id,
+		});
+		if (res.success) {
+			setCompleted(true);
+			//reset states
+		}
+	};
+
+	const goToDashboard = () => {
+		history.push("/");
+	};
+
 	const next = async () => {
 		if (current === 0) {
 			await fetchShowsByDateAndMovie(selectedDate, movie._id);
@@ -308,32 +331,47 @@ const Booking = ({
 
 	return (
 		<>
-			<Steps current={current}>
-				{steps.map((item) => (
-					<Step key={item.title} title={item.title} />
-				))}
-			</Steps>
-			<div className="steps-content">{steps[current].content}</div>
-			<div className="steps-action">
-				{current < steps.length - 1 && (
-					<Button type="primary" onClick={() => next()}>
-						Next
-					</Button>
-				)}
-				{current === steps.length - 1 && (
-					<Button
-						type="primary"
-						onClick={() => message.success("Processing complete!")}
-					>
-						Done
-					</Button>
-				)}
-				{current > 0 && (
-					<Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-						Previous
-					</Button>
-				)}
-			</div>
+			{" "}
+			{!completed ? (
+				<>
+					<Steps current={current}>
+						{steps.map((item) => (
+							<Step key={item.title} title={item.title} />
+						))}
+					</Steps>
+					<div className="steps-content">
+						{steps[current].content}
+					</div>
+					<div className="steps-action">
+						{current < steps.length - 1 && (
+							<Button type="primary" onClick={() => next()}>
+								Next
+							</Button>
+						)}
+						{current === steps.length - 1 && (
+							<Button
+								type="primary"
+								onClick={() => onConfirmBooking()}
+							>
+								Done
+							</Button>
+						)}
+						{current > 0 && (
+							<Button
+								style={{ margin: "0 8px" }}
+								onClick={() => prev()}
+							>
+								Previous
+							</Button>
+						)}
+					</div>
+				</>
+			) : (
+				<Row>
+					<Title>Booking Successfull</Title>
+					<Button onClick={goToDashboard}>Go to Dashboard</Button>
+				</Row>
+			)}
 		</>
 	);
 };
