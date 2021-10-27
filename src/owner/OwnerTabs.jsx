@@ -23,13 +23,13 @@ const OwnerTabs = () => {
       defaultActiveKey={search.replace("?tab=", "")}
       onChange={changeHandler}
     >
-      <TabPane tab="Tab 1" key="screen">
+      <TabPane tab="Screens" key="screen">
         <Screens />
       </TabPane>
-      <TabPane tab="Tab 2" key="showtime">
+      <TabPane tab="Shows" key="showtime">
         <ShowTimings />
       </TabPane>
-      <TabPane tab="Tab 3" key="users">
+      <TabPane tab="Users" key="users">
         <Users />
       </TabPane>
     </Tabs>
