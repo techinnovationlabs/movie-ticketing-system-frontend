@@ -7,12 +7,11 @@ import { Layout } from "antd";
 
 const { Content, Footer, Header } = Layout;
 function App() {
-  const isAuthenticated = store.getState().auth.isAuthenticated;
-
   return (
     <Provider store={store}>
       {window.location.pathname.includes("login") ||
-      window.location.pathname.includes("sign-up") ? (
+      window.location.pathname.includes("sign-up") ||
+      window.location.pathname === "/" ? (
         <AppRoute />
       ) : (
         <Layout>
@@ -22,7 +21,10 @@ function App() {
           <Content>
             <AppRoute />
           </Content>
-          <Footer>Footer</Footer>
+          <Footer style={{ textAlign: "center" }}>
+            {" "}
+            Movie ticketing system@2021
+          </Footer>
         </Layout>
       )}
     </Provider>
