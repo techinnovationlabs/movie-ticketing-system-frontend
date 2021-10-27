@@ -29,7 +29,6 @@ const ShowCreateModal = ({
 		clearMessages();
 	});
 	const onFormSubmit = async (values) => {
-		debugger;
 		await handleSubmit(values);
 	};
 

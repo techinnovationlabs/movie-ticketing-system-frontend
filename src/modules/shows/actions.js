@@ -30,7 +30,29 @@ export const fetchShows = () => async (
             });
         });
 };
-
+export const fetchShowsByDateAndMovie = (date, movieId) => async (
+    dispatch
+) => {
+    dispatch({
+        type: FETCH_SHOWS_START,
+    });
+    await axiosRootInstance
+        .get(`shows?movieId=${movieId}&date=${date}`)
+        .then((res) => {
+            dispatch({
+                type: FETCH_SHOWS_SUCCESS,
+                payload: {
+                    shows: res.data,
+                },
+            });
+        })
+        .catch((err) => {
+            dispatch({
+                type: FETCH_SHOWS_FAIL,
+                payload: { fetchErrorMessage: err.response?.data },
+            });
+        });
+};
 export const createShow = (values) => async (
     dispatch
 ) => {
