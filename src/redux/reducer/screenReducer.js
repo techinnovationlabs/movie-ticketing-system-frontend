@@ -19,7 +19,6 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case FETCH_SCREENS:
-      debugger;
       return {
         ...state,
         screens: payload,
