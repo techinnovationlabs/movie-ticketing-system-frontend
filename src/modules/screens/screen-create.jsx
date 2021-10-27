@@ -85,6 +85,7 @@ const ScreenModal = ({
 							rules={[
 								() => ({
 									required: true,
+									message: "Please enter the name",
 								}),
 							]}
 						>
@@ -101,10 +102,13 @@ const ScreenModal = ({
 							rules={[
 								() => ({
 									required: true,
+									message: "Please enter the price",
 								}),
 							]}
 						>
 							<Input
+								type="number"
+								min={0}
 								placeholder="Enter here"
 								className="inputStyle"
 							/>
@@ -117,10 +121,13 @@ const ScreenModal = ({
 							rules={[
 								() => ({
 									required: true,
+									message: "Please enter the price",
 								}),
 							]}
 						>
 							<Input
+								type="number"
+								min={0}
 								placeholder="Enter here"
 								className="inputStyle"
 							/>

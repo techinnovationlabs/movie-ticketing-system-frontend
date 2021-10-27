@@ -91,12 +91,6 @@ const Register = (props) => {
 								required: true,
 								message: "Please enter your password",
 							},
-							{
-								min: 5,
-								message:
-									"Password must be minimum 5 characters.",
-							},
-							,
 						]}
 					>
 						<Input />
