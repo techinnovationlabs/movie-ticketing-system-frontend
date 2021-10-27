@@ -36,7 +36,7 @@ const Dashboard = (props) => {
 								View details
 							</Button>,
 							<Button onClick={() => onBookTicket(movie._id)}>
-								Book tickets
+								Book now
 							</Button>,
 						]}
 					>

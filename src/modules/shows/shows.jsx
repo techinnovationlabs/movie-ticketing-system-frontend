@@ -157,8 +157,8 @@ const Shows = ({
 					afterClose={clearFetchError}
 				/>
 			) : null}
-			<Row>
-				<Button onClick={() => setCreateModal(true)}>
+			<Row style={{ marginBottom: "10px" }}>
+				<Button type="primary" onClick={() => setCreateModal(true)}>
 					Create Show
 				</Button>
 			</Row>

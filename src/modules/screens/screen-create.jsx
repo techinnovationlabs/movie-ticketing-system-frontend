@@ -143,7 +143,9 @@ const ScreenModal = ({
 							Cancel
 						</Button>
 						<Spin spinning={loading}>
-							<Button htmlType="submit">Submit</Button>
+							<Button type="primary" htmlType="submit">
+								Submit
+							</Button>
 						</Spin>
 					</div>
 				</Form>

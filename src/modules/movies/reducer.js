@@ -3,7 +3,6 @@ import {
     FETCH_MOVIES_FAIL,
     FETCH_MOVIE_SUCCESS,
     FETCH_MOVIE_FAIL,
-    FETCH_MOVIE_START,
     FETCH_MOVIES_START,
     CLEAR_MOVIE_FETCH_ERROR_MSG
 } from "./action-types";
@@ -19,7 +18,7 @@ const initialState = {
 const movieManagement = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
-        case FETCH_MOVIES_START || FETCH_MOVIE_START:
+        case FETCH_MOVIES_START:
             return {
                 ...state,
                 loading: true,
@@ -42,13 +41,15 @@ const movieManagement = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                selectedMovie: payload.movie
+                selectedMovie: payload.movie,
+                fetchErrorMessage: null,
             };
         case FETCH_MOVIE_FAIL:
             return {
                 ...state,
                 loading: false,
-                selectedMovie: null
+                selectedMovie: null,
+                fetchErrorMessage: payload.fetchErrorMessage,
             };
         case CLEAR_MOVIE_FETCH_ERROR_MSG:
             return {

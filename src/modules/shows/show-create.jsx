@@ -198,17 +198,13 @@ const ShowCreateModal = ({
 					</Row>
 					<div className="modalBtn">
 						<Form.Item style={{ marginRight: "3%" }}>
-							<Button
-								className="cancelBtn"
-								htmlType="reset"
-								onClick={handleClose}
-							>
+							<Button htmlType="reset" onClick={handleClose}>
 								Cancel
 							</Button>
 						</Form.Item>
 						<Form.Item>
 							<Spin spinning={loading}>
-								<Button className="submitBtn" htmlType="submit">
+								<Button type="primary" htmlType="submit">
 									Submit
 								</Button>
 							</Spin>

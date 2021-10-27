@@ -122,8 +122,8 @@ const Screens = ({
 					afterClose={clearFetchError}
 				/>
 			) : null}
-			<Row>
-				<Button onClick={() => setCreateModal(true)}>
+			<Row style={{ marginBottom: 10 }}>
+				<Button type="primary" onClick={() => setCreateModal(true)}>
 					Create Screen
 				</Button>
 			</Row>
