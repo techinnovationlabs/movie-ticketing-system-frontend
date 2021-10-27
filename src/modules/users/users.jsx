@@ -129,7 +129,7 @@ const Users = ({
 			</Row>
 			{viewModal ? (
 				<UserViewModal
-					handelClose={handleCancel}
+					handleClose={handleCancel}
 					visible={viewModal}
 					user={selectedUser}
 				/>

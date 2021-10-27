@@ -3,7 +3,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { Modal, Typography, Button, Row, Col } from "antd";
 const { Text } = Typography;
 
-const screenViewModal = ({ handleClose, screen, visible }) => {
+const ShowViewModal = ({ handleClose, show, visible }) => {
 	return (
 		<Modal
 			title={
@@ -14,7 +14,7 @@ const screenViewModal = ({ handleClose, screen, visible }) => {
 							style={{ display: "flex", alignItems: "center" }}
 							span={20}
 						>
-							View Screen
+							View Show
 						</Col>
 						<Col className="gutter-row" span={4}>
 							<Button
@@ -36,27 +36,37 @@ const screenViewModal = ({ handleClose, screen, visible }) => {
 		>
 			<Row>
 				<Col className="doubleDot" span={11}>
-					<Text> Screen Name</Text>
+					<Text> Date </Text>
 				</Col>
 				<Col className="popValue" span={13}>
-					<Text>{screen.name} </Text>
+					<Text>{show.date} </Text>
 				</Col>
 			</Row>
 			<Row>
-				<Text> Tiers</Text>
+				<Col className="doubleDot" span={11}>
+					<Text> Movie </Text>
+				</Col>
+				<Col className="popValue" span={13}>
+					<Text>{show.movie.title} </Text>
+				</Col>
 			</Row>
-			{screen.tier.map((tier) => {
-				return (
-					<Row>
-						<Col className="doubleDot" span={11}>
-							<Text> {tier.name}</Text>
-						</Col>
-						<Col className="popValue" span={13}>
-							<Text>{tier.price} Rs</Text>
-						</Col>
-					</Row>
-				);
-			})}
+			<Row>
+				<Col className="doubleDot" span={11}>
+					<Text> Screen </Text>
+				</Col>
+				<Col className="popValue" span={13}>
+					<Text>{show.screen.name} </Text>
+				</Col>
+			</Row>
+			<Row>
+				<Col className="doubleDot" span={11}>
+					<Text> Slot </Text>
+				</Col>
+				<Col className="popValue" span={13}>
+					<Text>{show.showTime.slot} </Text>
+				</Col>
+			</Row>
+
 			<Row justify={"center"}>
 				<Button
 					style={{ marginTop: 25 }}
@@ -70,4 +80,4 @@ const screenViewModal = ({ handleClose, screen, visible }) => {
 	);
 };
 
-export default screenViewModal;
+export default ShowViewModal;

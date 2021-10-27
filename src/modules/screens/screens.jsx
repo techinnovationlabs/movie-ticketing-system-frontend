@@ -40,7 +40,6 @@ const Screens = ({
 	};
 
 	const handleSubmit = async (values) => {
-		debugger;
 		setLoading(true);
 		const result = await createScreen(values);
 		if (result.success) {
@@ -139,14 +138,14 @@ const Screens = ({
 			</Row>
 			{viewModal ? (
 				<ScreenViewModal
-					handelClose={handleCancel}
+					handleClose={handleCancel}
 					visible={viewModal}
 					screen={selectedScreen}
 				/>
 			) : null}
 			{createModal ? (
 				<ScreenCreateModal
-					handelClose={handleCreateCancel}
+					handleClose={handleCreateCancel}
 					visible={createModal}
 					handleSubmit={handleSubmit}
 					errorMsg={errorMsg}

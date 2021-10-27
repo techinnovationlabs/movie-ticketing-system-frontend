@@ -3,7 +3,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { Modal, Typography, Button, Row, Col } from "antd";
 const { Text } = Typography;
 
-const userViewModal = ({ handelClose, user, visible }) => {
+const userViewModal = ({ handleClose, user, visible }) => {
 	return (
 		<Modal
 			title={
@@ -19,7 +19,7 @@ const userViewModal = ({ handelClose, user, visible }) => {
 						<Col className="gutter-row" span={4}>
 							<Button
 								style={{ border: "none" }}
-								onClick={handelClose}
+								onClick={handleClose}
 							>
 								<CloseOutlined />
 							</Button>
@@ -29,7 +29,7 @@ const userViewModal = ({ handelClose, user, visible }) => {
 			}
 			visible={visible}
 			maskClosable={false}
-			onCancel={handelClose}
+			onCancel={handleClose}
 			footer={null}
 			closable={false}
 			width={400}
@@ -71,7 +71,7 @@ const userViewModal = ({ handelClose, user, visible }) => {
 				<Button
 					style={{ marginTop: 25 }}
 					type="primary"
-					onClick={handelClose}
+					onClick={handleClose}
 				>
 					Close
 				</Button>

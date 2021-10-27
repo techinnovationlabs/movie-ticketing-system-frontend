@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps*/
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
 	Row,
 	Col,
@@ -16,7 +16,7 @@ import { NORMAL_TIER_ROWS, VIP_TIER_ROWS } from "../../utils/constants";
 
 const ScreenModal = ({
 	visible,
-	handelClose,
+	handleClose,
 	handleSubmit,
 	errorMsg,
 	clearMessages,
@@ -51,7 +51,7 @@ const ScreenModal = ({
 					<div className="screen-modal-header">
 						<div>Create Screen</div>
 						<div>
-							<Button className="closeBtn" onClick={handelClose}>
+							<Button className="closeBtn" onClick={handleClose}>
 								<CloseOutlined />
 							</Button>
 						</div>
@@ -60,7 +60,7 @@ const ScreenModal = ({
 				visible={visible}
 				width={500}
 				maskClosable={false}
-				onCancel={handelClose}
+				onCancel={handleClose}
 				footer={null}
 				closable={false}
 				centered={true}
@@ -130,7 +130,7 @@ const ScreenModal = ({
 					<div className="modalBtn">
 						<Button
 							htmlType="reset"
-							onClick={handelClose}
+							onClick={handleClose}
 							style={{ marginRight: "25px" }}
 						>
 							Cancel
