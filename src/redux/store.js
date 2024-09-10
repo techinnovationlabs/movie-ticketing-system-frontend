@@ -1,13 +1,20 @@
-import { createStore, applyMiddleware } from "redux";
-import { rootReducer } from "./reducer/index-reducer";
-import thunk from "redux-thunk";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunkMiddleware from "redux-thunk";
+import reducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const devTools =
-  process.env.NODE_ENV === "production"
-    ? applyMiddleware(thunk)
-    : composeWithDevTools(applyMiddleware(thunk));
+const defaultMiddlewares = [thunkMiddleware];
 
-const store = createStore(rootReducer, devTools);
+const composedMiddlewares = (middlewares) =>
+    compose(applyMiddleware(...defaultMiddlewares, ...middlewares));
 
-export default store;
+const initialize = (initialState, middlewares = []) =>
+    createStore(
+        reducer,
+        initialState,
+        process.env.NODE_ENV === "development"		//devtools visible only for development environment
+            ? composeWithDevTools(composedMiddlewares(middlewares))
+            : composedMiddlewares(middlewares)
+    );
+
+export default initialize;
