@@ -1,0 +1,9 @@
+.screen-modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.modalBtn {
+	display: flex;
+}
